@@ -13,7 +13,11 @@ class MainPopupMenuButton extends StatelessWidget {
         return [
           PopupMenuItem(
             child: Text('Login'),
-            value: 'login',
+            value: '/',
+          ),
+          PopupMenuItem(
+            child: Text('User Info'),
+            value: '/userData',
           ),
           PopupMenuItem(
             child: Text('Groups'),
