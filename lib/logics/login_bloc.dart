@@ -11,6 +11,7 @@ class LoginBloc extends BaseBloc {
     notifyListeners();
   }
 
+  var _test;
   LoginBloc() {}
 
   Future<void> acquireTokenInteractively() async {
@@ -20,10 +21,10 @@ class LoginBloc extends BaseBloc {
         authority:
             "https://dressupsuitup.b2clogin.com/tfp/dressupsuitup.onmicrosoft.com/B2C_1_signupsignin/");
     try {
-      authToken = await pca.acquireToken([
+      _test = await pca.acquireToken([
         "https://dressupsuitup.onmicrosoft.com/48816f1c-21fa-483e-9d79-ca77c96d8ddc/Files.Read"
       ]);
-      print(authToken);
+      print(_test);
       notifyListeners();
     } on MsalException catch (e) {
       print(e);
