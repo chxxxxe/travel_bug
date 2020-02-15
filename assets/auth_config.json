@@ -1,0 +1,12 @@
+{
+    "client_id": "48816f1c-21fa-483e-9d79-ca77c96d8ddc",
+    "authorization_user_agent": "DEFAULT",
+    "redirect_uri": "msauth://com.travelbug.flutterapp/M61nf%2BaC69kCXmFY1ejcX83rDNc%3D",
+    "authorities": [
+        {
+            "type": "B2C",
+            "authority_url": "https://dressupsuitup.b2clogin.com/tfp/dressupsuitup.onmicrosoft.com/B2C_1_signupsignin/",
+            "default": true
+        }
+    ]
+}
