@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:msal_flutter/msal_flutter.dart';
 
-class LoginBloc extends ChangeNotifier {
+import 'logics.dart';
+
+class LoginBloc extends BaseBloc {
   String _authToken = 'not set';
 
   String get authToken => _authToken;
@@ -10,21 +11,7 @@ class LoginBloc extends ChangeNotifier {
     notifyListeners();
   }
 
-  LoginBloc() {
-    // try {
-
-    //   fma = FlutterMicrosoftAuthentication(
-    //       kClientID: "48816f1c-21fa-483e-9d79-ca77c96d8ddc",
-    //       kAuthority:
-    //           "https://dressupsuitup.b2clogin.com/tfp/dressupsuitup.onmicrosoft.com/B2C_1_signupsignin/",
-    //       kScopes: ["User.Read", "User.ReadBasic.All"],
-    //       androidConfigAssetPath:
-    //           "assets/auth_config.json" // Android MSAL Config file
-    //       );
-    // } catch (e) {
-    //   print(e);
-    // }
-  }
+  LoginBloc() {}
 
   Future<void> acquireTokenInteractively() async {
     // Sign in interactively
