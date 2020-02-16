@@ -5,3 +5,5 @@ export 'base_bloc.dart';
 export 'home_bloc.dart';
 export 'flight_bloc.dart';
 export 'hotels_bloc.dart';
+export 'camera_bloc.dart';
+export 'camera_photos_bloc.dart';

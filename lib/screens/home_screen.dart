@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_bug/logics/camera_bloc.dart';
 import 'package:travel_bug/logics/logics.dart';
+import 'package:travel_bug/screens/camera_screen.dart';
 import 'package:travel_bug/screens/screens.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var homeBloc = Provider.of<HomeBloc>(context);
     return DefaultTabController(
-      length: 8,
+      length: 9,
       child: Scaffold(
         appBar: AppBar(
           title: Text(homeBloc.title),
@@ -18,12 +20,13 @@ class HomeScreen extends StatelessWidget {
             isScrollable: true,
             tabs: [
               SizedBox(child: Tab(text: 'Profile')),
-              Tab(text: 'Photos'),
+              Tab(text: 'Posted Photos'),
               Tab(text: 'Buddies'),
               Tab(text: 'Map'),
               Tab(text: 'Flights'),
               Tab(text: 'Hotels'),
-              Tab(text: 'Cars'),
+              Tab(text: 'Camera'),
+              Tab(text: 'Camera Photos'),
               Tab(text: 'Restaurants'),
             ],
           ),
@@ -51,8 +54,13 @@ class HomeScreen extends StatelessWidget {
               create: (_) => HotelsBloc(),
               child: HotelsScreen(),
             ),
-            Container(
-              child: Text('Cars'),
+            ChangeNotifierProvider(
+              create: (_) => CameraBloc(),
+              child: CameraScreen(),
+            ),
+            ChangeNotifierProvider(
+              create: (_) => CameraPhotosBloc(),
+              child: CameraPhotosScreen(),
             ),
             Container(
               child: Text('Restaurants'),
