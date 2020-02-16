@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_bug/logics/logics.dart';
 
 class MainPopupMenuButton extends StatelessWidget {
   const MainPopupMenuButton({
@@ -27,9 +28,24 @@ class MainPopupMenuButton extends StatelessWidget {
             child: Text('Settings'),
             value: 'settings',
           ),
+          PopupMenuItem(
+            child: Text('Home'),
+            value: '/home',
+          ),
         ];
       },
-      onSelected: (value) => Navigator.pushNamed(context, value),
+      onSelected: (value) {
+        var mainBloc = MainBloc();
+        mainBloc.currentBloc = getBlocBasedOn(value);
+        Navigator.popAndPushNamed(context, value);
+      },
     );
+  }
+
+  BaseBloc getBlocBasedOn(value) {
+    switch (value) {
+      case '/home':
+        return HomeBloc();
+    }
   }
 }
