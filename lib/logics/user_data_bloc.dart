@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class UserData extends ChangeNotifier {
+class UserDataBloc extends ChangeNotifier {
   FirstName firstName;
   String lastName;
   String address1;

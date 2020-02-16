@@ -6,7 +6,12 @@ import 'package:travel_bug/widgets/widgets.dart';
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var loginBloc = Provider.of<MainBloc>(context).currentBloc as LoginBloc;
+    var currentBloc = Provider.of<MainBloc>(context).currentBloc;
+    LoginBloc loginBloc;
+    if (currentBloc is LoginBloc)
+      loginBloc = currentBloc;
+    else
+      loginBloc = LoginBloc();
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),

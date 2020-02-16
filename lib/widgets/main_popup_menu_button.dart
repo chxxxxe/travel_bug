@@ -34,10 +34,10 @@ class MainPopupMenuButton extends StatelessWidget {
           ),
         ];
       },
-      onSelected: (value) {
-        var mainBloc = MainBloc();
-        mainBloc.currentBloc = getBlocBasedOn(value);
-        Navigator.popAndPushNamed(context, value);
+      onSelected: (value) async {
+        // var mainBloc = MainBloc();
+        await Navigator.pushNamed(context, value);
+        // mainBloc.currentBloc = getBlocBasedOn(value);
       },
     );
   }

@@ -9,14 +9,14 @@ class MainBloc extends ChangeNotifier {
   BaseBloc _currentBloc;
 
   BaseBloc get currentBloc => _currentBloc;
-  set currentBloc(BaseBloc bloc) {
-    if (_currentBloc != null) _currentBloc.removeListener(listener);
-    _currentBloc = bloc;
-    _currentBloc.addListener(listener);
-  }
+  // set currentBloc(BaseBloc bloc) {
+  //   if (_currentBloc != null) _currentBloc.removeListener(listener);
+  //   _currentBloc = bloc;
+  //   _currentBloc.addListener(listener);
+  // }
 
   MainBloc._() {
-    currentBloc = LoginBloc();
+    // currentBloc = LoginBloc();
   }
 
   void listener() {

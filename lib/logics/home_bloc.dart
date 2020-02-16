@@ -4,6 +4,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:travel_bug/logics/base_bloc.dart';
 
 class HomeBloc extends BaseBloc {
@@ -12,12 +13,17 @@ class HomeBloc extends BaseBloc {
   String key = 'S7OIei9kDYqSYbcX1ByW3ZXZLSPGeGbL';
   String secret = 'DEAh7NF90GcAenFv';
   String _token = '';
-  // HttpClient client;
 
-  // Future<String> get token async {
-  //   if (_token == '') await getAuthToken();
-  //   return token;
-  // }
+  static HomeTitle _title = HomeTitle();
+  String get title => _title.title;
+  set title(String value) {
+    _title.title = value;
+    notifyListeners();
+  }
+
+  HomeBloc() {
+    _title.addListener(notifyListeners);
+  }
 
   Future<void> getAuthToken(Function onDoneCallback) async {
     var client = new HttpClient();
@@ -72,11 +78,12 @@ class HomeBloc extends BaseBloc {
   //   notifyListeners();
   // }
 
-  void getData(Uri url, Function(dynamic) onCompleted) async {
+  void getData(Uri url, void Function(Map<String, dynamic>) onCompleted) async {
     if (_token == '') getAuthToken(() => _getData(url, onCompleted));
   }
 
-  Future<void> _getData(Uri url, Function(dynamic) onCompleted) async {
+  Future<void> _getData(
+      Uri url, void Function(Map<String, dynamic>) onCompleted) async {
     var responseData = '';
     var client = new HttpClient();
     client.badCertificateCallback =
@@ -99,5 +106,15 @@ class HomeBloc extends BaseBloc {
     } finally {
       client.close();
     }
+  }
+}
+
+class HomeTitle extends ChangeNotifier {
+  static String _title = '';
+
+  String get title => _title;
+  set title(String value) {
+    _title = value;
+    notifyListeners();
   }
 }

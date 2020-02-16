@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_bug/logics/logics.dart';
 import 'package:travel_bug/logics/main_bloc.dart';
 
 import 'screens/screens.dart';
@@ -18,9 +19,12 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         routes: {
-          '/': (context) => LoginScreen(),
-          '/userData': (context) => UserDataScreen(),
-          '/home': (context) => HomeScreen(),
+          '/': (context) => ChangeNotifierProvider(
+              create: (_) => LoginBloc(), child: LoginScreen()),
+          '/userData': (context) => ChangeNotifierProvider(
+              create: (_) => UserDataBloc(), child: UserDataScreen()),
+          '/home': (context) => ChangeNotifierProvider(
+              create: (_) => HomeBloc(), child: HomeScreen()),
           // '/landing' :(context) => LandingScreen(),
         },
       ),
