@@ -20,12 +20,12 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (context) => ChangeNotifierProvider(
-              create: (_) => LoginBloc(), child: LoginScreen()),
+              create: (context) => LoginBloc(context), child: LoginScreen()),
           '/userData': (context) => ChangeNotifierProvider(
               create: (_) => UserDataBloc(), child: UserDataScreen()),
           '/home': (context) => ChangeNotifierProvider(
               create: (_) => HomeBloc(), child: HomeScreen()),
-          // '/landing' :(context) => LandingScreen(),
+          // '/landing' :(context) => LandingScreen(),f
         },
       ),
     );

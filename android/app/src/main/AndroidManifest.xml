@@ -46,5 +46,6 @@
         <meta-data android:name="OnlineSearch.Key" android:value="7OmPrfFaYw9D9y52SVSPR4NnxAGec5JS" />
         <meta-data android:name="OnlineRouting.Key" android:value="7OmPrfFaYw9D9y52SVSPR4NnxAGec5JS" />
         <meta-data android:name="GeofencingApi.Key" android:value="7OmPrfFaYw9D9y52SVSPR4NnxAGec5JS" />
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBQm9IE805jFgbc_Gsmc5wbJND_EUejass"/>
     </application>
 </manifest>

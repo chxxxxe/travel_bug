@@ -7,3 +7,4 @@ export 'flight_bloc.dart';
 export 'hotels_bloc.dart';
 export 'camera_bloc.dart';
 export 'camera_photos_bloc.dart';
+export 'map_bloc.dart';

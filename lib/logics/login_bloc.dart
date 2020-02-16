@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:msal_flutter/msal_flutter.dart';
 
 import 'logics.dart';
 
 class LoginBloc extends BaseBloc {
   String _authToken = 'not set';
+  BuildContext _buildContext;
 
   String get authToken => _authToken;
   set authToken(String value) {
@@ -12,7 +14,9 @@ class LoginBloc extends BaseBloc {
   }
 
   var _test;
-  LoginBloc() {}
+  LoginBloc(BuildContext context) {
+    _buildContext = context;
+  }
 
   Future<void> acquireTokenInteractively() async {
     // Sign in interactively
@@ -25,6 +29,7 @@ class LoginBloc extends BaseBloc {
         "https://dressupsuitup.onmicrosoft.com/48816f1c-21fa-483e-9d79-ca77c96d8ddc/Files.Read"
       ]);
       print(_test);
+      await Navigator.popAndPushNamed(_buildContext, '/home');
       notifyListeners();
     } on MsalException catch (e) {
       print(e);

@@ -41,10 +41,16 @@ class HomeScreen extends StatelessWidget {
               child: Text('Photos'),
             ),
             Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/buddies.jpg'),
+                    fit: BoxFit.fitWidth),
+              ),
               child: Text('Buddies'),
             ),
-            Container(
-              child: Text('Map'),
+            ChangeNotifierProvider(
+              create: (_) => MapBloc(),
+              child: MapScreen(),
             ),
             ChangeNotifierProvider(
               create: (_) => FlightBloc(),

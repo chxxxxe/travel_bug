@@ -8,30 +8,45 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var currentBloc = Provider.of<MainBloc>(context).currentBloc;
     LoginBloc loginBloc;
-    if (currentBloc is LoginBloc)
+    if (currentBloc is LoginBloc) {
       loginBloc = currentBloc;
-    else
-      loginBloc = LoginBloc();
+      if (loginBloc.authToken != 'not set') {
+        Navigator.pushNamed(context, '/home');
+      }
+    } else
+      loginBloc = LoginBloc(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.orangeAccent,
         title: Text('Login'),
         actions: <Widget>[MainPopupMenuButton()],
       ),
       body: Container(
-        color: Colors.white,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/travelbug.JPG'),
+              fit: BoxFit.scaleDown,
+              repeat: ImageRepeat.repeat),
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(loginBloc.authToken),
-            // Text('Account Inf')
-            FlatButton(
-              child: Text('Interactive Token'),
+            SizedBox(
+              height: 200,
+            ),
+            IconButton(
+              iconSize: 150,
+              icon: Icon(
+                Icons.bug_report,
+                color: Colors.red,
+              ),
               onPressed: loginBloc.acquireTokenInteractively,
             ),
-            FlatButton(
-              child: Text('Silent Token'),
-              onPressed: loginBloc.acquireTokenSilently,
-            ),
+            // FlatButton(
+            //   child: Text('Silent Token'),
+            //   onPressed: loginBloc.acquireTokenSilently,
+            // ),
           ],
         ),
       ),
